@@ -1,7 +1,7 @@
 package com.example.tastmanager.services;
 
-import com.example.tastmanager.dto.NoteDTO;
-import com.example.tastmanager.dto.NoteRequestDTO;
+import com.example.tastmanager.dto.note.NoteDTO;
+import com.example.tastmanager.dto.note.NoteRequestDTO;
 
 import java.util.List;
 import java.util.Map;

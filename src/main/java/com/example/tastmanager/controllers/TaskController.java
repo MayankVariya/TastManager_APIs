@@ -1,7 +1,7 @@
 package com.example.tastmanager.controllers;
 
-import com.example.tastmanager.dto.TaskDTO;
-import com.example.tastmanager.dto.TaskRequestDTO;
+import com.example.tastmanager.dto.task.TaskDTO;
+import com.example.tastmanager.dto.task.TaskRequestDTO;
 import com.example.tastmanager.services.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

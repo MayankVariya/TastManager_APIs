@@ -1,5 +1,6 @@
-package com.example.tastmanager.dto;
+package com.example.tastmanager.dto.task;
 
+import com.example.tastmanager.dto.note.NoteDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

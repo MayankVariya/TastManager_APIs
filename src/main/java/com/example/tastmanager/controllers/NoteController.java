@@ -1,7 +1,7 @@
 package com.example.tastmanager.controllers;
 
-import com.example.tastmanager.dto.NoteDTO;
-import com.example.tastmanager.dto.NoteRequestDTO;
+import com.example.tastmanager.dto.note.NoteDTO;
+import com.example.tastmanager.dto.note.NoteRequestDTO;
 import com.example.tastmanager.services.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.example.tastmanager.dto;
+package com.example.tastmanager.dto.note;
 
 import lombok.Data;
 

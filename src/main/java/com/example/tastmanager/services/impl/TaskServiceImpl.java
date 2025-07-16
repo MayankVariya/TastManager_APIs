@@ -1,7 +1,7 @@
 package com.example.tastmanager.services.impl;
 
-import com.example.tastmanager.dto.TaskDTO;
-import com.example.tastmanager.dto.TaskRequestDTO;
+import com.example.tastmanager.dto.task.TaskDTO;
+import com.example.tastmanager.dto.task.TaskRequestDTO;
 import com.example.tastmanager.entities.Task;
 import com.example.tastmanager.repositories.TaskRepository;
 import com.example.tastmanager.services.TaskService;

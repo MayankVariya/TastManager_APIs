@@ -1,4 +1,4 @@
-package com.example.tastmanager.dto;
+package com.example.tastmanager.dto.task;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

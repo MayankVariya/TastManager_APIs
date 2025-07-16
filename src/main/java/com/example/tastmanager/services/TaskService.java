@@ -1,7 +1,7 @@
 package com.example.tastmanager.services;
 
-import com.example.tastmanager.dto.TaskDTO;
-import com.example.tastmanager.dto.TaskRequestDTO;
+import com.example.tastmanager.dto.task.TaskDTO;
+import com.example.tastmanager.dto.task.TaskRequestDTO;
 
 import java.util.*;
 
