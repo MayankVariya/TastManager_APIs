@@ -1,56 +1,201 @@
-# 📋 Task Manager API – Spring Boot
+## 📋 Task Manager API
 
-A simple RESTful API for managing tasks and their associated notes, built with **Spring Boot** and **PostgreSQL**.
-
----
-
-## ✨ Features
-
-- ✅ Create, update, delete tasks
-- 📝 Add and retrieve notes for tasks
-- 📅 Set deadlines and manage completion status
-- ⚙️ PostgreSQL integration
-- 🧩 DTO to Entity mapping using ModelMapper
-- 🚫 Global exception handling
-- 📂 Clean architecture and layered structure
-- 📥 Postman collection for easy testing
+A simple RESTful API to manage tasks and notes, built with Spring Boot.
 
 ---
 
-## 🔧 PostgreSQL Setup
+### 🔧 Configure Environment Profile
 
-### ✅ Step 1: Install PostgreSQL
+Set the active profile to control which database is used:
 
-Download and install PostgreSQL from the official website:  
-🔗 [https://www.postgresql.org/download](https://www.postgresql.org/download)
+- `dev` ➝ Uses **H2** in-memory database (default)
+- `prod` ➝ Uses **PostgreSQL** for production
 
-Make sure the PostgreSQL service is running on your machine.
+```properties
+# application.properties
+spring.profiles.active=dev  # or prod
+```
 
----
+➡️ **For `prod` profile (PostgreSQL)**
 
-### ✅ Step 2: Create the Database
+If PostgreSQL is not installed on your system:
 
-Create a new database with the name: TaskManagerDB
+- 🔗 Download and install it from the official site:  
+  👉 [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
 
----
-
-## 📥 Postman Collection
-
-To make testing easier, this project includes a Postman collection with all Task and Note API endpoints.
-
-📁 [Download Task Manager.postman_collection.json](Task%20Manager.postman_collection.json)
-
-### 🚀 How to Use
-
-1. Open [Postman](https://www.postman.com/downloads/)
-2. Click **Import** > **File**
-3. Select the file `Task Manager.postman_collection.json`
-4. Start exploring and testing the API endpoints!
-
-The collection includes example payloads for all endpoints like creating tasks, updating notes, etc.
+After installation, create a database named: `taskManagerDB`
 
 ---
 
-### ⭐ If you like this project, give it a star!
-### 🛠️ Feel free to fork or contribute to improve it. 
+✅ After setting up the database and configuring the profile, run your project and access your API at:
 
+#### 🔗 Base URL : `http://localhost:8080`
+
+---
+<details>
+  
+<summary>📚 API Endpoints</summary>
+<br/>
+<details>
+  <summary>Tasks</summary>
+  <br/>
+  <details>
+<summary><strong>Get All Tasks</strong> &mdash; <code>GET http://localhost:8080/tasks</code></summary>
+
+**Method:** `GET`  
+**Endpoint:** `http://localhost:8080/tasks`
+
+</details>
+
+<details>
+<summary><strong>Get Task By ID</strong> &mdash; <code>GET http://localhost:8080/tasks/{task_id}</code></summary>
+
+**Method:** `GET`  
+**Endpoint:** `http://localhost:8080/tasks/{id}`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+
+</details>
+
+<details>
+<summary><strong>Add Task</strong> <code>POST http://localhost:8080/tasks</code></summary>
+
+**Method:** `POST`  
+**Endpoint:** `http://localhost:8080/tasks`
+
+**Request Body:**
+```json
+{
+    "title":"Task 1",
+    "description":"This is task 2.",
+    "deadline":"2025-07-11",
+    "completed":false
+}
+```
+</details>
+
+<details>
+<summary><strong>Update Task By ID</strong> &mdash; <code>PUT http://localhost:8080/tasks/{task_id}</code></summary>
+
+**Method:** `PUT`  
+**Endpoint:** `http://localhost:8080/tasks/{task_id}`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+
+**Request Body:**
+```json
+{
+    "title":"Task 1",
+    "description":"This is task 2.",
+    "deadline":"2025-07-11",
+    "completed":true
+}
+```
+</details>
+
+<details>
+<summary><strong>Patch Update Task By ID</strong> &mdash; <code>PATCH http://localhost:8080/tasks/{task_id}</code></summary>
+
+**Method:** `PATCH`  
+**Endpoint:** `http://localhost:8080/tasks/{task_id}`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+
+**Request Body:**
+```json
+{
+    "completed": true
+}
+```
+</details>
+
+<details>
+<summary><strong>Delete Task</strong> &mdash; <code>DELETE http://localhost:8080/tasks/{task_id}</code></summary>
+
+**Method:** `DELETE`  
+**Endpoint:** `http://localhost:8080/tasks/{id}`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+
+</details>
+</details>
+
+<details>
+  <summary>Notes</summary>
+  <br/>
+<details>
+<summary><strong>Get All Notes in Task</strong> &mdash; <code>GET http://localhost:8080/tasks/{task_id}/notes</code></summary>
+
+**Method:** `GET`  
+**Endpoint:** `http://localhost:8080/tasks/{task_d}/notes`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+
+</details>
+
+<details>
+<summary><strong>Get Note by ID</strong> &mdash; <code>GET http://localhost:8080/tasks/{task_id}/notes/{note_id}</code></summary>
+
+**Method:** `GET`  
+**Endpoint:** `http://localhost:8080/tasks/{task_id}/notes/{note_id}`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+- Path variable: note_id(e.g., 2)
+
+</details>
+
+<details>
+<summary><strong>Create Note in Task</strong> &mdash; <code>POST http://localhost:8080/tasks/{task_id}/notes</code></summary>
+
+**Method:** `POST`  
+**Endpoint:** `http://localhost:8080/tasks/{task_id}/notes`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+
+**Request Body:**
+```json
+{
+    "content":"This third test note"
+}
+```
+</details>
+
+<details>
+<summary><strong>Update note by Id</strong> &mdash; <code>PATCH http://localhost:8080/tasks/{task_id}/notes/{note_id}</code></summary>
+
+**Method:** `PATCH`  
+**Endpoint:** `http://localhost:8080/tasks/{task_id}/notes/{note_id}`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+- Path variable: note_id(e.g., 2)
+
+**Request Body:**
+```json
+{
+    "content":"This third test note"
+}
+```
+
+</details>
+
+<details>
+<summary><strong>Delete note by Id</strong> &mdash; <code>DELETE http://localhost:8080/tasks/{task_id}/notes/{note_id}</code></summary>
+
+**Method:** `DELETE`  
+**Endpoint:** `http://localhost:8080/tasks/{task_id}/notes/{note_id}`
+
+**Path Variables:**
+- Path variable: task_id(e.g., 1)
+- Path variable: note_id(e.g., 2)
+
+</details>
+</details>
+</details>
